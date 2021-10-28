@@ -1,25 +1,14 @@
-def swap_element(arr,i,j):
-    temp = arr[i]
-    arr[i] = arr[j]
-    arr[j] = temp
+def sorted_list(num_list, list_sort, str_len):
+    if str_len < 1:
+        return
+    else:
+        list_sort.append(max(num_list))
+        num_list.pop(num_list.index(max(num_list)))
+        sorted_list(num_list, list_sort, str_len - 1)
 
 
-def reverse_sort(arr, n):
-    if n > 0:
-        for i in range(0, n):
-            if arr[i] <= arr[n - 1]:
-                swap_element(arr, i, n - 1)
-        reverse_sort(arr, n - 1)
-
-
-def print_arr(arr,n):
-    for i in range(0, n):
-        print(arr[i],end=" ")
-
-
-arr = list(input("Enter your List : ").split(','))
-reverse_sort(arr,len(arr))
-
-print("List after Sorted :",end=' ')
-
-print(list(map(int,arr)))
+str_inp = input("Enter your List : ").split(",")
+str_temp = list(map(int, str_inp))
+lst_s = []
+sorted_list(str_temp, lst_s, len(str_temp))
+print("List after Sorted : ", lst_s, sep="")
